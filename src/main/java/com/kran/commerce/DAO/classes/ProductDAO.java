@@ -51,7 +51,7 @@ public class ProductDAO implements  IProductDAO{
 
     @Override
     public List<Product> FindByCategory(int cId) {
-        TypedQuery<Product> query=entityManager.createQuery("FROM Product where categoryId=:cId",Product.class);
+        TypedQuery<Product> query=entityManager.createQuery("FROM Product where category.id=:cId",Product.class);
         query.setParameter("cId", cId);
         return query.getResultList(); 
     }

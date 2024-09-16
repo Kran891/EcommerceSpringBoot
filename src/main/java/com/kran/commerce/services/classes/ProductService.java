@@ -10,6 +10,8 @@ import com.kran.commerce.entities.Product;
 import com.kran.commerce.errors.ServiceError;
 import com.kran.commerce.services.interfaces.IProductService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductService implements IProductService{
     private final IProductDAO productDAO;
@@ -20,11 +22,13 @@ public class ProductService implements IProductService{
     
     
     @Override
+    @Transactional
     public Product Save(Product product) {
         return productDAO.Save(product);
     }
 
     @Override
+    @Transactional
     public void Delete(int id) {
         int res=productDAO.Delete(id);
         if (res==0) {
@@ -33,6 +37,7 @@ public class ProductService implements IProductService{
     }
 
     @Override
+    @Transactional
     public Product Update(Product product) {
         return productDAO.Update(product);
     }
