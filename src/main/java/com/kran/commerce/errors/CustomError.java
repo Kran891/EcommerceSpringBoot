@@ -13,6 +13,10 @@ public class CustomError extends RuntimeException{
     public HttpStatus getStatus() {
         return status;
     }
+    @Override
+    public String toString() {
+        return "CustomError [getStatus()=" + getStatus() + ", getMessage()=" + getMessage() + "]";
+    }
     
     
     

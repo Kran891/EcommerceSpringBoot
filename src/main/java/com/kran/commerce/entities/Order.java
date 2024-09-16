@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 @Entity
 @Table(name="orders")
@@ -14,33 +16,36 @@ public class Order {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
-    private int Id;
+    private int id;
     private String name;
     private Date orderDate;
     private Date deliveryDate;
-    private int ProductId;
-    private  int PayementId;
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private Product product;
+    @ManyToOne
+    @JoinColumn(name = "paymentId")
+    private  Payment payement;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
     
     public Order() {
     }
-    public Order(String name, Date orderDate, Date deliveryDate, int productId, int PayementId) {
+    public Order(String name, Date orderDate, Date deliveryDate, Product product, Payment payement,User user) {
         this.name = name;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
-        PayementId = productId;
-        ProductId = productId;
+        this.payement = payement;
+        this.user=user;
+        this.product=product;
     }
-    public int getPayementId() {
-        return PayementId;
-    }
-    public void setPayementId(int payementId) {
-        PayementId = payementId;
-    }
+    
     public int getId() {
-        return Id;
+        return id;
     }
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
     public String getName() {
         return name;
@@ -60,11 +65,24 @@ public class Order {
     public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
-    public int getProductId() {
-        return ProductId;
+    public Product getProduct() {
+        return product;
     }
-    public void setProductId(int productId) {
-        ProductId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
+    public Payment getPayement() {
+        return payement;
+    }
+    public void setPayement(Payment payement) {
+        this.payement = payement;
+    }
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
     
 }
