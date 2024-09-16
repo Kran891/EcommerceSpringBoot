@@ -1,9 +1,13 @@
 package com.kran.commerce.entities;
 
+import java.util.Locale;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,17 +17,22 @@ public class Product {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private String Name;
-    private int categoryId;
+    @ManyToOne
+    @JoinColumn(name="categoryId")
+    private Category category;
     private float price;
-    private int sellerId;
-    public Product(String name, int categoryId,float price,int sellerId) {
-        Name = name;
-        this.price = price;
-        this.categoryId = categoryId;
-        this.sellerId = sellerId;
-    }
+    @ManyToOne
+    @JoinColumn(name="sellerId")
+    private User seller;
 
     public Product() {
+    }
+
+    public Product(String Name, Category category, float price, User seller) {
+        this.Name = Name;
+        this.category = category;
+        this.price = price;
+        this.seller = seller;
     }
 
     public int getId() {
@@ -38,16 +47,16 @@ public class Product {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public float getPrice() {
@@ -58,12 +67,12 @@ public class Product {
         this.price = price;
     }
 
-    public int getSellerId() {
-        return sellerId;
+    public User getSeller() {
+        return seller;
     }
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+    public void setSeller(User seller) {
+        this.seller = seller;
     }
     
 }

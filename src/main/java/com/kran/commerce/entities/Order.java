@@ -29,60 +29,76 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
-    
+
     public Order() {
     }
-    public Order(String name, Date orderDate, Date deliveryDate, Product product, Payment payement,User user) {
+
+    public Order(Date deliveryDate, String name, Date orderDate, Payment payement, Product product, User user) {
+        this.deliveryDate = deliveryDate;
         this.name = name;
         this.orderDate = orderDate;
-        this.deliveryDate = deliveryDate;
         this.payement = payement;
-        this.user=user;
-        this.product=product;
+        this.product = product;
+        this.user = user;
     }
     
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Date getOrderDate() {
         return orderDate;
     }
+
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
+
     public Date getDeliveryDate() {
         return deliveryDate;
     }
+
     public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
+
     public Product getProduct() {
         return product;
     }
+
     public void setProduct(Product product) {
         this.product = product;
     }
+
     public Payment getPayement() {
         return payement;
     }
+
     public void setPayement(Payment payement) {
         this.payement = payement;
     }
+
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
     
     
 }
