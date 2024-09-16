@@ -1,7 +1,5 @@
 package com.kran.commerce.entities;
 
-import java.util.Locale;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name="products")
@@ -24,6 +23,8 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="sellerId")
     private User seller;
+    @Transient
+    public int categoryId;
 
     public Product() {
     }
