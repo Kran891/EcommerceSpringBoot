@@ -8,6 +8,7 @@ import com.kran.commerce.DAO.interfaces.IProductDAO;
 import com.kran.commerce.entities.Product;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 @Repository
 public class ProductDAO implements  IProductDAO{
@@ -18,23 +19,29 @@ public class ProductDAO implements  IProductDAO{
     }
 
     @Override
-    public void Save(Product product) {
+    public Product Save(Product product) {
           entityManager.persist(product);
+          return product;
         }
 
     @Override
-    public void Delete(int id) {
-        entityManager.remove(FindById(id));
+    public int Delete(int id) {
+        //This way is possible but alt way is good
+        Query query=entityManager.createQuery("DELETE FROM Product where id=:id");
+        query.setParameter("id", id);
+        return query.executeUpdate();
+       // entityManager.remove(FindById(id));
       }
 
     @Override
-    public void Update(Product product) {
-        entityManager.merge(product);
+    public Product Update(Product product) {
+        return entityManager.merge(product);
         }
 
     @Override
     public List<Product> FindByCategory(int cId) {
         TypedQuery<Product> query=entityManager.createQuery("FROM Product where categoryId=:cId",Product.class);
+        query.setParameter("cId", cId);
         return query.getResultList(); 
     }
 

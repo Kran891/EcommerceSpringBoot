@@ -1,19 +1,19 @@
 package com.kran.commerce.errors;
 
+import org.springframework.http.HttpStatus;
+
 public class CustomError extends RuntimeException{
-    private int status;
+    private final HttpStatus status;
  
-    public CustomError(int status, String message) {
+    public CustomError(HttpStatus status, String message) {
         super(message);
         this.status = status;
  
     }
-    public int getStatus() {
+    public HttpStatus getStatus() {
         return status;
     }
-    public void setStatus(int status) {
-        this.status = status;
-    }
+    
     
     
 }

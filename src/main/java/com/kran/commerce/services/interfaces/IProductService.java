@@ -1,12 +1,14 @@
-package com.kran.commerce.DAO.interfaces;
+package com.kran.commerce.services.interfaces;
+
+
 
 import java.util.List;
 
 import com.kran.commerce.entities.Product;
 
-public interface IProductDAO {
+public interface IProductService {
   Product Save(Product product);
-  int Delete(int id);
+  void Delete(int id);
   Product Update(Product product);
   List<Product> FindByCategory(int cId);
   Product FindById(int id);
