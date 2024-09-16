@@ -1,5 +1,7 @@
 package com.kran.commerce.entities;
 
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +13,7 @@ import jakarta.persistence.Table;
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.UUID)
-    private int id;
+    private UUID id;
     private String name;
     private String email;
     private String phoneNumber;

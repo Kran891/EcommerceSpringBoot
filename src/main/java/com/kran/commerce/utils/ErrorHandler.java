@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.kran.commerce.errors.CustomError;
 import com.kran.commerce.errors.DatabaseError;
 
-@ControllerAdvice
+
 public class ErrorHandler {
     @ExceptionHandler
     public ResponseEntity<CustomError> errorHandler(Exception exp){
