@@ -1,5 +1,7 @@
 package com.kran.commerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +17,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    private String Name;
+    private String name;
     @ManyToOne
     @JoinColumn(name="categoryId")
     private Category category;
@@ -24,13 +26,14 @@ public class Product {
     @JoinColumn(name="sellerId")
     private User seller;
     @Transient
+    @JsonIgnore
     public int categoryId;
 
     public Product() {
     }
 
     public Product(String Name, Category category, float price, User seller) {
-        this.Name = Name;
+        this.name = Name;
         this.category = category;
         this.price = price;
         this.seller = seller;
@@ -45,11 +48,11 @@ public class Product {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = Name;
     }
 
     public Category getCategory() {

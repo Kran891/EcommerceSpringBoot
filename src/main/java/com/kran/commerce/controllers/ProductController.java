@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kran.commerce.entities.Product;
@@ -33,7 +32,7 @@ public class ProductController {
         productService.Delete(id);
         return "Deleted Product With Id -"+id;
     }
-    @PostMapping("/")
+    @PostMapping("")
     public Product Save(@RequestBody Product entity) {
         return  productService.Save(entity);
     }
