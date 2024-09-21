@@ -16,12 +16,14 @@ public class User {
     private UUID id;
     private String name;
     private String email;
+    private String password;
     private String phoneNumber;
 
-    public User(String name, String email, String phoneNumber) {
+    public User(String name, String email, String phoneNumber,String password) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password=password;
     }
 
     public User() {
@@ -59,6 +61,14 @@ public class User {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
 

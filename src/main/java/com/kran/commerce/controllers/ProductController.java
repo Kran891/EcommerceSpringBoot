@@ -27,7 +27,7 @@ public class ProductController {
     }
     
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public String Delete(@PathVariable int id) {
         productService.Delete(id);
         return "Deleted Product With Id -"+id;
@@ -36,15 +36,15 @@ public class ProductController {
     public Product Save(@RequestBody Product entity) {
         return  productService.Save(entity);
     }
-    @PutMapping("/")
+    @PutMapping("")
     public Product Update(@RequestBody Product entity) {
         return productService.Update(entity);
     }
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public Product FindById(@PathVariable int id) {
        return productService.FindById(id);
     }
-    @GetMapping("/category/{cId}")
+    @GetMapping("category/{cId}")
     public List<Product> FindByCategory(@PathVariable int cId) {
         return productService.FindByCategory(cId);
     }
